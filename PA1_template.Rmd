@@ -2,7 +2,10 @@
 title: "Reproducible Research Assignment 1"
 author: "Betty Yeo"
 date: "14 December 2014"
-output: html_document
+output:
+  html_document:
+    fig_caption: yes
+    keep_md: yes
 ---
 # Reproducible Research
 
@@ -37,6 +40,7 @@ Make a time series plot (i.e. type = "l") of the 5-minute interval
 averaged across all days (y-axis)
 
 ```{r}
+library(ggplot2)
 avgStep <- aggregate(x = list(steps = activitylist$steps), by = list(interval = activitylist$interval), 
                       FUN = mean, na.rm = TRUE)
 

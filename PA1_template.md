@@ -1,9 +1,6 @@
----
-title: "Reproducible Research Assignment 1"
-author: "Betty Yeo"
-date: "14 December 2014"
-output: html_document
----
+# Reproducible Research Assignment 1
+Betty Yeo  
+14 December 2014  
 # Reproducible Research
 
 ## Loading and preprocessing the data
@@ -23,7 +20,7 @@ totalSteps <- tapply(activitylist$steps, activitylist$date, sum,na.rm=TRUE)
 hist(totalSteps,xlab="No of Steps")
 ```
 
-![plot of chunk unnamed-chunk-1](figure/unnamed-chunk-1-1.png) 
+![](PA1_template_files/figure-html/unnamed-chunk-1-1.png) 
 
 
 
@@ -54,13 +51,14 @@ averaged across all days (y-axis)
 
 
 ```r
+library(ggplot2)
 avgStep <- aggregate(x = list(steps = activitylist$steps), by = list(interval = activitylist$interval), 
                       FUN = mean, na.rm = TRUE)
 
 ggplot(data = avgStep, aes(x = interval, y = steps)) + geom_line() + xlab("5 MIN Interval") +  ylab("average steps")
 ```
 
-![plot of chunk unnamed-chunk-3](figure/unnamed-chunk-3-1.png) 
+![](PA1_template_files/figure-html/unnamed-chunk-3-1.png) 
 
 The maximum average number of steps across all days:
 
@@ -119,7 +117,7 @@ totalSteps2 <- tapply(mergedlist$steps, mergedlist$date, sum,na.rm=TRUE)
 qplot(totalSteps2, xlab="Daily Steps taken", binwidth=500)
 ```
 
-![plot of chunk unnamed-chunk-7](figure/unnamed-chunk-7-1.png) 
+![](PA1_template_files/figure-html/unnamed-chunk-7-1.png) 
 
 ```r
 mean(totalSteps2,na.rm=TRUE)
@@ -168,7 +166,7 @@ ggplot(avgStep4Mergedlist, aes(interval,steps))+geom_line()+facet_grid(day~.)+
   xlab("Interval")+ylab("Avg Steps")
 ```
 
-![plot of chunk unnamed-chunk-9](figure/unnamed-chunk-9-1.png) 
+![](PA1_template_files/figure-html/unnamed-chunk-9-1.png) 
 
 
 
